@@ -116,7 +116,9 @@ class App extends Component {
       if( this.state.firstPlayer[this.state.playAgainst] === this.state.secondPlayer[this.state.playAgainst] ) this.setState({ fightResult: 'draw' });
 
       else {
-        if (this.state.firstPlayer[this.state.playAgainst] > this.state.secondPlayer[this.state.playAgainst]) {
+        let firstValue = parseInt(this.state.firstPlayer[this.state.playAgainst]);
+        let secondValue = parseInt(this.state.secondPlayer[this.state.playAgainst]);
+        if (firstValue > secondValue) {
           this.setState({ showScore: true, fightResult: 'first', firstPlayerScore: this.state.firstPlayerScore + 1 });
         } else {
           this.setState({ showScore: true, fightResult: 'second', secondPlayerScore: this.state.secondPlayerScore + 1 })
