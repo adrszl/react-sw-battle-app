@@ -1,0 +1,31 @@
+.winner {
+  animation: flash-win linear 1.5s infinite;
+}
+
+.loser {
+  animation: flash-lose linear 1.5s infinite;
+}
+
+@keyframes flash-win {
+	0% { 
+    background-color: #fff;
+  } 
+	50% { 
+    background-color: #42f551;
+  } 
+	100% { 
+    background-color: #fff;
+  }
+}
+
+@keyframes flash-lose {
+	0% { 
+    background-color: #fff;
+  } 
+	50% { 
+    background-color: #fa0000;
+  } 
+	100% { 
+    background-color: #fff;
+  }
+}
