@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import Header from './components/Header';
+import RadioGameType from './components/RadioGameType';
 import PlayerCard from './components/PlayerCard';
 import StarshipCard from './components/StarshipCard';
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -146,10 +148,11 @@ class App extends Component {
     }
     return (
       <div className="pb-4">
-        <h1 className="text-center">React based SW battle app</h1>
-        <h4 className="text-center">Select game type:</h4>
+        
+        <Header />
+        <RadioGameType handleRadioChange={ this.handleRadioChange } />
 
-        <div className="input-group mx-auto">
+        {/* <div className="input-group mx-auto">
           <div className="input-group-prepend ml-auto">
             <div className="d-flex flex-column input-group-text">
               <label htmlFor="People">People</label>
@@ -162,7 +165,7 @@ class App extends Component {
               <input type="radio" name="game_type" value="Starships" onChange={ this.handleRadioChange } />
             </div>
           </div>
-        </div>
+        </div> */}
 
         { this.state.radioSelected !== '' ?
           <div className="mt-4 text-center">
