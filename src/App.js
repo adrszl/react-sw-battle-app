@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Header from './components/Header';
 import RadioGameType from './components/RadioGameType';
+import DropdownPlayAgainst from './components/DropdownPlayAgainst';
 import PlayerCard from './components/PlayerCard';
 import StarshipCard from './components/StarshipCard';
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 import './App.css';
 
 const classes = {
@@ -151,6 +152,13 @@ class App extends Component {
         
         <Header />
         <RadioGameType handleRadioChange={ this.handleRadioChange } />
+        
+        { this.state.radioSelected !== '' ? 
+          <DropdownPlayAgainst 
+            gameType={this.state.radioSelected} 
+            handleSelect={this.handleDropdownSelect} 
+            playAgainst={this.state.playAgainst} />
+        : null }
 
         {/* <div className="input-group mx-auto">
           <div className="input-group-prepend ml-auto">
@@ -167,7 +175,7 @@ class App extends Component {
           </div>
         </div> */}
 
-        { this.state.radioSelected !== '' ?
+        {/* { this.state.radioSelected !== '' ?
           <div className="mt-4 text-center">
             <Dropdown onSelect={this.handleDropdownSelect}>
               <Dropdown.Toggle variant="secondary">
@@ -193,7 +201,7 @@ class App extends Component {
             </Dropdown>
           </div>
           : null
-        }
+        } */}
 
         <div className="text-center mt-4">
           <Button variant="success" onClick={ this.fetchFighters }>GET NEW PLAYERS</Button>
