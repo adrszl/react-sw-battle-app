@@ -4,8 +4,10 @@ import Spinner from 'react-bootstrap/Spinner';
 import Header from './components/Header';
 import RadioGameType from './components/RadioGameType';
 import DropdownPlayAgainst from './components/DropdownPlayAgainst';
+import ScoreCounter from './components/ScoreCounter';
 import PlayerCard from './components/PlayerCard';
 import StarshipCard from './components/StarshipCard';
+import Snackbar from '@material-ui/core/Snackbar';
 import './App.css';
 
 const classes = {
@@ -24,7 +26,8 @@ class App extends Component {
     this.state = {
       radioSelected: '',
       playAgainst: '',
-      error: '',
+      errorOccurred: false,
+      errorMessage: '',
       newGameStarted: false,
       loading: true,
       showScore: false,
@@ -52,7 +55,9 @@ class App extends Component {
 
   fetchFighters() {
     this.setState({ loading: true, newGameStarted: true, fightResult: '' });
-    this.state.radioSelected === '' ? this.setState({ error: 'Please choose game type' }) : this.setState({ error: '' });
+    this.state.radioSelected === '' ? 
+      this.setState({ errorOccurred: true, errorMessage: 'Please choose game type' }) 
+      : this.setState({ error: '' });
 
     if( this.state.radioSelected === 'People' ) {
       let personNum = Math.floor(Math.random() * 90);
@@ -159,63 +164,22 @@ class App extends Component {
             playAgainst={this.state.playAgainst} />
         : null }
 
-        {/* <div className="input-group mx-auto">
-          <div className="input-group-prepend ml-auto">
-            <div className="d-flex flex-column input-group-text">
-              <label htmlFor="People">People</label>
-              <input type="radio" name="game_type" value="People" onChange={ this.handleRadioChange } />
-            </div>
-          </div>
-          <div className="input-group-append mr-auto">
-            <div className="d-flex flex-column input-group-text">
-              <label htmlFor="Starhips">Starhips</label>
-              <input type="radio" name="game_type" value="Starships" onChange={ this.handleRadioChange } />
-            </div>
-          </div>
-        </div> */}
-
-        {/* { this.state.radioSelected !== '' ?
-          <div className="mt-4 text-center">
-            <Dropdown onSelect={this.handleDropdownSelect}>
-              <Dropdown.Toggle variant="secondary">
-                Play against {this.state.playAgainst}
-              </Dropdown.Toggle>
-
-              { this.state.radioSelected === 'People' ?
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey={'height'}>Height</Dropdown.Item>
-                  <Dropdown.Item eventKey={'mass'}>Mass</Dropdown.Item>
-                </Dropdown.Menu>
-                :
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey={'cost_in_credits'}>Cost In Credits</Dropdown.Item>
-                  <Dropdown.Item eventKey={'length'}>Length</Dropdown.Item>
-                  <Dropdown.Item eventKey={'max_atmosphering_speed'}>Max Atmosphering Speed</Dropdown.Item>
-                  <Dropdown.Item eventKey={'crew'}>Crew</Dropdown.Item>
-                  <Dropdown.Item eventKey={'passengers'}>Passengers</Dropdown.Item>
-                  <Dropdown.Item eventKey={'cargo_capacity'}>Cargo Capacity</Dropdown.Item>
-                </Dropdown.Menu>
-              }
-
-            </Dropdown>
-          </div>
-          : null
-        } */}
-
         <div className="text-center mt-4">
-          <Button variant="success" onClick={ this.fetchFighters }>GET NEW PLAYERS</Button>
+          <Button variant="success" onClick={this.fetchFighters}>GET NEW PLAYERS</Button>
         </div>
-        
-        { this.state.error !== '' ? <div className="text-center mt-3"><span className="text-danger">{this.state.error}</span></div> : null }
-        
-        { this.state.showScore ? 
-          <div className="text-center mt-3">
-            <span>First Player Score: {this.state.firstPlayerScore}</span>
-            <span> | </span>
-            <span>Second Player Score: {this.state.secondPlayerScore}</span>
-          </div> 
-          : null
-        }
+
+        <ScoreCounter show={this.state.showScore} first={this.state.firstPlayerScore} second={this.state.secondPlayerScore} />
+
+        <Snackbar
+          open={this.state.errorOccurred}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          autoHideDuration={2000}
+          onClose={() => this.setState({ errorOccurred: false, errorMessage: '' })}
+          message={this.state.errorMessage}
+        />
 
         { this.state.fightResult !== '' ? 
           this.state.fightResult !== 'draw' ?
