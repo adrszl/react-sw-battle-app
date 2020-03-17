@@ -157,12 +157,10 @@ class App extends Component {
         <Header />
         <RadioGameType handleRadioChange={ this.handleRadioChange } />
         
-        { this.state.radioSelected !== '' ? 
-          <DropdownPlayAgainst 
-            gameType={this.state.radioSelected} 
-            handleSelect={this.handleDropdownSelect} 
-            playAgainst={this.state.playAgainst} />
-        : null }
+        <DropdownPlayAgainst 
+          gameType={this.state.radioSelected} 
+          handleSelect={this.handleDropdownSelect} 
+          playAgainst={this.state.playAgainst} />
 
         <div className="text-center mt-4">
           <Button variant="success" onClick={this.fetchFighters}>GET NEW PLAYERS</Button>
