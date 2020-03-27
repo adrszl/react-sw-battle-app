@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
 import Header from './components/Header';
 import RadioGameType from './components/RadioGameType';
 import DropdownPlayAgainst from './components/DropdownPlayAgainst';
@@ -8,6 +7,8 @@ import ScoreCounter from './components/ScoreCounter';
 import PlayerCard from './components/PlayerCard';
 import StarshipCard from './components/StarshipCard';
 import Snackbar from '@material-ui/core/Snackbar';
+import ResultInfo from './components/ResultInfo';
+import LoadingSpinner from './components/Spinner';
 import './App.css';
 
 const classes = {
@@ -179,48 +180,45 @@ class App extends Component {
           message={this.state.errorMessage}
         />
 
-        { this.state.fightResult !== '' ? 
-          this.state.fightResult !== 'draw' ?
-            <div className="text-center mt-3">
-              <span style={classes.capitalize}><strong>{this.state.fightResult} Player Won!</strong></span>
-            </div>
-            : <div className="text-center mt-3"><span><strong>It's a draw!</strong></span></div>
-          : null
-        }        
+        <ResultInfo fightResult={this.state.fightResult} style={classes.capitalize} />
 
-        { this.state.newGameStarted && this.state.loading && this.state.error === '' ? 
+        <LoadingSpinner newGame={this.state.newGameStarted} loading={this.state.loading} error={this.state.error} />
+
+        {/* { this.state.newGameStarted && this.state.loading && this.state.error === '' ? 
           <div className="text-center mt-3"><Spinner animation="border" /></div>
           : null
-        }
+        } */}
 
         { this.state.newGameStarted && !this.state.loading && this.state.radioSelected === 'People' ?
           <div>
             <div className="d-flex flex-row justify-content-around mt-4">
               <div className="card-container" style={classes.cards}>
                 <PlayerCard 
-                  name={this.state.firstPlayer.name} 
-                  height={this.state.firstPlayer.height}
-                  mass={this.state.firstPlayer.mass}
-                  hairColor={this.state.firstPlayer.hair_color}
-                  skinColor={this.state.firstPlayer.skin_color}
-                  eyeColor={this.state.firstPlayer.eye_color}
-                  birthYear={this.state.firstPlayer.birth_year}
-                  gender={this.state.firstPlayer.gender}
-                  resultClass={resultClassFirst}
+                  // name={this.state.firstPlayer.name} 
+                  // height={this.state.firstPlayer.height}
+                  // mass={this.state.firstPlayer.mass}
+                  // hairColor={this.state.firstPlayer.hair_color}
+                  // skinColor={this.state.firstPlayer.skin_color}
+                  // eyeColor={this.state.firstPlayer.eye_color}
+                  // birthYear={this.state.firstPlayer.birth_year}
+                  // gender={this.state.firstPlayer.gender}
+                  // resultClass={resultClassFirst}
+                  player={this.state.firstPlayer}
                 />
               </div>
               <p>VS</p>
               <div className="card-container" style={classes.cards}>
                 <PlayerCard 
-                  name={this.state.secondPlayer.name} 
-                  height={this.state.secondPlayer.height}
-                  mass={this.state.secondPlayer.mass}
-                  hairColor={this.state.secondPlayer.hair_color}
-                  skinColor={this.state.secondPlayer.skin_color}
-                  eyeColor={this.state.secondPlayer.eye_color}
-                  birthYear={this.state.secondPlayer.birth_year}
-                  gender={this.state.secondPlayer.gender}
-                  resultClass={resultClassSecond}
+                  // name={this.state.secondPlayer.name} 
+                  // height={this.state.secondPlayer.height}
+                  // mass={this.state.secondPlayer.mass}
+                  // hairColor={this.state.secondPlayer.hair_color}
+                  // skinColor={this.state.secondPlayer.skin_color}
+                  // eyeColor={this.state.secondPlayer.eye_color}
+                  // birthYear={this.state.secondPlayer.birth_year}
+                  // gender={this.state.secondPlayer.gender}
+                  // resultClass={resultClassSecond}
+                  player={this.state.secondPlayer}
                 />
               </div>
             </div>

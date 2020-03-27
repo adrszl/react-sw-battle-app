@@ -11,22 +11,23 @@ class PlayerCard extends Component {
     }
 
     render() {
+        const { name, height, hair_color, mass, skin_color, eye_color, birth_year, gender } = this.props.player;
         return(
             <Card className={ this.props.resultClass }>
                 <CardHeader 
-                    title={this.props.name}
+                    title={name}
                     subheader="Player name" 
                 />
                 <CardContent>
                     <Typography variant="h5" component="h2">Player Details:</Typography>
                     <Typography variant="body2" component="p">
-                        Height: <strong>{this.props.height}</strong><br />
-                        Mass: <strong>{this.props.mass}</strong><br />
-                        Hair Color: <strong>{this.props.hairColor}</strong><br />
-                        Skin Color: <strong>{this.props.skinColor}</strong><br />
-                        Eye Color: <strong>{this.props.eyeColor}</strong><br />
-                        Birth Year: <strong>{this.props.birthYear}</strong><br />
-                        Gender: <strong>{this.props.gender}</strong>
+                        Height: <strong>{height}</strong><br />
+                        Mass: <strong>{mass}</strong><br />
+                        Hair Color: <strong>{hair_color}</strong><br />
+                        Skin Color: <strong>{skin_color}</strong><br />
+                        Eye Color: <strong>{eye_color}</strong><br />
+                        Birth Year: <strong>{birth_year}</strong><br />
+                        Gender: <strong>{gender}</strong>
                     </Typography>
                 </CardContent>
             </Card>
