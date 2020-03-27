@@ -3,12 +3,28 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 function DropdownPlayAgainst(props) {
     let dropdownRender = null;
+    let label = '';
+
+    switch(props.playAgainst) {
+        case 'cost_in_credits':
+            label = 'cost in credit';
+            break;
+        case 'max_atmosphering_speed':
+            label = 'max atmosphering speed';
+            break;
+        case 'cargo_capacity':
+            label = 'cargo capacity';
+            break;
+        default:
+            label = props.playAgainst;
+    }
+
     if(props.gameType === 'People') {
         dropdownRender = (
             <div className="mt-4 text-center">
                 <Dropdown onSelect={props.handleSelect}>
                     <Dropdown.Toggle variant="secondary">
-                        Play against {props.playAgainst}
+                        Play against {label}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item eventKey={'height'}>Height</Dropdown.Item>
@@ -22,7 +38,7 @@ function DropdownPlayAgainst(props) {
             <div className="mt-4 text-center">
                 <Dropdown onSelect={props.handleSelect}>
                     <Dropdown.Toggle variant="secondary">
-                        Play against {props.playAgainst}
+                        Play against {label}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item eventKey={'cost_in_credits'}>Cost In Credits</Dropdown.Item>
