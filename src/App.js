@@ -202,7 +202,7 @@ class App extends Component {
                   // eyeColor={this.state.firstPlayer.eye_color}
                   // birthYear={this.state.firstPlayer.birth_year}
                   // gender={this.state.firstPlayer.gender}
-                  // resultClass={resultClassFirst}
+                  resultClass={resultClassFirst}
                   player={this.state.firstPlayer}
                 />
               </div>
@@ -217,7 +217,7 @@ class App extends Component {
                   // eyeColor={this.state.secondPlayer.eye_color}
                   // birthYear={this.state.secondPlayer.birth_year}
                   // gender={this.state.secondPlayer.gender}
-                  // resultClass={resultClassSecond}
+                  resultClass={resultClassSecond}
                   player={this.state.secondPlayer}
                 />
               </div>
@@ -236,39 +236,41 @@ class App extends Component {
             <div className="d-flex flex-row justify-content-around mt-4">
               <div className="card-container" style={classes.cards}>
                 <StarshipCard 
-                  name={this.state.firstPlayer.name}
-                  model={this.state.firstPlayer.model}
-                  manufacturer={this.state.firstPlayer.manufacturer}
-                  costInCredits={this.state.firstPlayer.cost_in_credits}
-                  length={this.state.firstPlayer.length}
-                  maxAtmospheringSpeed={this.state.firstPlayer.max_atmosphering_speed}
-                  crew={this.state.firstPlayer.crew}
-                  passengers={this.state.firstPlayer.passengers}
-                  cargoCapacity={this.state.firstPlayer.cargo_capacity}
-                  consumables={this.state.firstPlayer.consumables}
-                  hyperdriveRating={this.state.firstPlayer.hyperdrive_rating}
-                  mglt={this.state.firstPlayer.MGLT}
-                  starshipClass={this.state.firstPlayer.starship_class}
-                  resultClass={resultClassFirst}
+                  // name={this.state.firstPlayer.name}
+                  // model={this.state.firstPlayer.model}
+                  // manufacturer={this.state.firstPlayer.manufacturer}
+                  // costInCredits={this.state.firstPlayer.cost_in_credits}
+                  // length={this.state.firstPlayer.length}
+                  // maxAtmospheringSpeed={this.state.firstPlayer.max_atmosphering_speed}
+                  // crew={this.state.firstPlayer.crew}
+                  // passengers={this.state.firstPlayer.passengers}
+                  // cargoCapacity={this.state.firstPlayer.cargo_capacity}
+                  // consumables={this.state.firstPlayer.consumables}
+                  // hyperdriveRating={this.state.firstPlayer.hyperdrive_rating}
+                  // mglt={this.state.firstPlayer.MGLT}
+                  // starshipClass={this.state.firstPlayer.starship_class}
+                  // resultClass={resultClassFirst}
+                  player={this.state.firstPlayer}
                 />
               </div>
               <p>VS</p>
               <div className="card-container" style={classes.cards}>
               <StarshipCard 
-                  name={this.state.secondPlayer.name}
-                  model={this.state.secondPlayer.model}
-                  manufacturer={this.state.secondPlayer.manufacturer}
-                  costInCredits={this.state.secondPlayer.cost_in_credits}
-                  length={this.state.secondPlayer.length}
-                  maxAtmospheringSpeed={this.state.secondPlayer.max_atmosphering_speed}
-                  crew={this.state.secondPlayer.crew}
-                  passengers={this.state.secondPlayer.passengers}
-                  cargoCapacity={this.state.secondPlayer.cargo_capacity}
-                  consumables={this.state.secondPlayer.consumables}
-                  hyperdriveRating={this.state.secondPlayer.hyperdrive_rating}
-                  mglt={this.state.secondPlayer.MGLT}
-                  starshipClass={this.state.secondPlayer.starship_class}
-                  resultClass={resultClassSecond}
+                  // name={this.state.secondPlayer.name}
+                  // model={this.state.secondPlayer.model}
+                  // manufacturer={this.state.secondPlayer.manufacturer}
+                  // costInCredits={this.state.secondPlayer.cost_in_credits}
+                  // length={this.state.secondPlayer.length}
+                  // maxAtmospheringSpeed={this.state.secondPlayer.max_atmosphering_speed}
+                  // crew={this.state.secondPlayer.crew}
+                  // passengers={this.state.secondPlayer.passengers}
+                  // cargoCapacity={this.state.secondPlayer.cargo_capacity}
+                  // consumables={this.state.secondPlayer.consumables}
+                  // hyperdriveRating={this.state.secondPlayer.hyperdrive_rating}
+                  // mglt={this.state.secondPlayer.MGLT}
+                  // starshipClass={this.state.secondPlayer.starship_class}
+                  // resultClass={resultClassSecond}
+                  player={this.state.secondPlayer}
                 />
               </div>
             </div>
