@@ -62,7 +62,7 @@ class App extends Component {
 
     if( this.state.radioSelected === 'People' ) {
       let personNum = Math.floor(Math.random() * 90);
-      fetch(`https://swapi.co/api/people/${personNum}`)
+      fetch(`https://swapi.dev/api/people/${personNum}`)
         .then((response) => {
           return response.json();
         })
@@ -72,7 +72,7 @@ class App extends Component {
 
       personNum = Math.floor(Math.random() * 90);
 
-      fetch(`https://swapi.co/api/people/${personNum}`)
+      fetch(`https://swapi.dev/api/people/${personNum}`)
         .then((response) => {
           return response.json();
         })
@@ -84,7 +84,7 @@ class App extends Component {
       let starshipPageNumStr = '';
       let randomResult = 0;
       starshipPageNum === 1 ? starshipPageNumStr = '' : starshipPageNumStr = `?page=${starshipPageNum}`; 
-      fetch(`https://swapi.co/api/starships/${starshipPageNumStr}`)
+      fetch(`https://swapi.dev/api/starships/${starshipPageNumStr}`)
         .then((response) => {
           return response.json();
         })
@@ -99,7 +99,7 @@ class App extends Component {
       randomResult = 0;
       starshipPageNum === 1 ? starshipPageNumStr = '' : starshipPageNumStr = `?page=${starshipPageNum}`; 
 
-      fetch(`https://swapi.co/api/starships/${starshipPageNumStr}`)
+      fetch(`https://swapi.dev/api/starships/${starshipPageNumStr}`)
         .then((response) => {
           return response.json();
         })
