@@ -184,24 +184,11 @@ class App extends Component {
 
         <LoadingSpinner newGame={this.state.newGameStarted} loading={this.state.loading} error={this.state.error} />
 
-        {/* { this.state.newGameStarted && this.state.loading && this.state.error === '' ? 
-          <div className="text-center mt-3"><Spinner animation="border" /></div>
-          : null
-        } */}
-
         { this.state.newGameStarted && !this.state.loading && this.state.radioSelected === 'People' ?
           <div>
             <div className="d-flex flex-row justify-content-around mt-4">
               <div className="card-container" style={classes.cards}>
                 <PlayerCard 
-                  // name={this.state.firstPlayer.name} 
-                  // height={this.state.firstPlayer.height}
-                  // mass={this.state.firstPlayer.mass}
-                  // hairColor={this.state.firstPlayer.hair_color}
-                  // skinColor={this.state.firstPlayer.skin_color}
-                  // eyeColor={this.state.firstPlayer.eye_color}
-                  // birthYear={this.state.firstPlayer.birth_year}
-                  // gender={this.state.firstPlayer.gender}
                   resultClass={resultClassFirst}
                   player={this.state.firstPlayer}
                 />
@@ -209,14 +196,6 @@ class App extends Component {
               <p>VS</p>
               <div className="card-container" style={classes.cards}>
                 <PlayerCard 
-                  // name={this.state.secondPlayer.name} 
-                  // height={this.state.secondPlayer.height}
-                  // mass={this.state.secondPlayer.mass}
-                  // hairColor={this.state.secondPlayer.hair_color}
-                  // skinColor={this.state.secondPlayer.skin_color}
-                  // eyeColor={this.state.secondPlayer.eye_color}
-                  // birthYear={this.state.secondPlayer.birth_year}
-                  // gender={this.state.secondPlayer.gender}
                   resultClass={resultClassSecond}
                   player={this.state.secondPlayer}
                 />
@@ -236,40 +215,14 @@ class App extends Component {
             <div className="d-flex flex-row justify-content-around mt-4">
               <div className="card-container" style={classes.cards}>
                 <StarshipCard 
-                  // name={this.state.firstPlayer.name}
-                  // model={this.state.firstPlayer.model}
-                  // manufacturer={this.state.firstPlayer.manufacturer}
-                  // costInCredits={this.state.firstPlayer.cost_in_credits}
-                  // length={this.state.firstPlayer.length}
-                  // maxAtmospheringSpeed={this.state.firstPlayer.max_atmosphering_speed}
-                  // crew={this.state.firstPlayer.crew}
-                  // passengers={this.state.firstPlayer.passengers}
-                  // cargoCapacity={this.state.firstPlayer.cargo_capacity}
-                  // consumables={this.state.firstPlayer.consumables}
-                  // hyperdriveRating={this.state.firstPlayer.hyperdrive_rating}
-                  // mglt={this.state.firstPlayer.MGLT}
-                  // starshipClass={this.state.firstPlayer.starship_class}
-                  // resultClass={resultClassFirst}
+                  resultClass={resultClassFirst}
                   player={this.state.firstPlayer}
                 />
               </div>
               <p>VS</p>
               <div className="card-container" style={classes.cards}>
               <StarshipCard 
-                  // name={this.state.secondPlayer.name}
-                  // model={this.state.secondPlayer.model}
-                  // manufacturer={this.state.secondPlayer.manufacturer}
-                  // costInCredits={this.state.secondPlayer.cost_in_credits}
-                  // length={this.state.secondPlayer.length}
-                  // maxAtmospheringSpeed={this.state.secondPlayer.max_atmosphering_speed}
-                  // crew={this.state.secondPlayer.crew}
-                  // passengers={this.state.secondPlayer.passengers}
-                  // cargoCapacity={this.state.secondPlayer.cargo_capacity}
-                  // consumables={this.state.secondPlayer.consumables}
-                  // hyperdriveRating={this.state.secondPlayer.hyperdrive_rating}
-                  // mglt={this.state.secondPlayer.MGLT}
-                  // starshipClass={this.state.secondPlayer.starship_class}
-                  // resultClass={resultClassSecond}
+                  resultClass={resultClassSecond}
                   player={this.state.secondPlayer}
                 />
               </div>
