@@ -5,20 +5,34 @@ export const FETCH_FIGHTERS_PEOPLE = 'FETCH_FIGHTERS_PEOPLE';
 export const FETCH_FIGHTERS_STARSHIPS = 'FETCH_FIGHTERS_STARSHIPS';
 export const FIGHTERS_LOADING = 'FIGHTERS_LOADING';
 export const FETCHING_FIGHTERS_FAILED = 'FETCHING_FIGHTERS_FAILED';
-export const ADD_FIGHTER = 'ADD_FIGHTER';
+export const ADD_FIRST_FIGHTER = 'ADD_FIRST_FIGHTER';
+export const ADD_SECOND_FIGHTER = 'ADD_SECOND_FIGHTER';
 
 const FETCH_BASE_URL = 'https://swapi.dev/api';
 
-export const fetchFightersPeople = (personId) => (dispatch) => {
+export const fetchFightersRedux = (personId, category, playerCase) => (dispatch) => {
     
     dispatch(fightersLoading());
 
-    return axios.get(FETCH_BASE_URL + `/people/${personId}`)
+    let fighterCategory = '';
+    category === 'people' ? fighterCategory = 'people' : fighterCategory = 'starships';
+
+    return axios.get(FETCH_BASE_URL + `/${fighterCategory}/${personId}`)
         .then(({data}) => {
-            dispatch(addFighter(data.items));
+            if(playerCase === 'first player') {
+                dispatch(addFirstFighter(data));
+            } else if(playerCase === 'second player') {
+                dispatch(addSecondFighter(data));
+            }
         })
         .catch((err) => {
             dispatch(fighterFailed(err));
+            
+            if(category === 'people') {
+                dispatch(fetchFightersRedux(1, 'people', playerCase));
+            } else {
+                dispatch(fetchFightersRedux(2, 'starships', playerCase));
+            }
         })
 };
 
@@ -28,9 +42,16 @@ export function fightersLoading() {
     }
 }
 
-export function addFighter(fighter) {
+export function addFirstFighter(fighter) {
     return { 
-        type: ADD_FIGHTER,
+        type: ADD_FIRST_FIGHTER,
+        payload: fighter
+    }
+}
+
+export function addSecondFighter(fighter) {
+    return { 
+        type: ADD_SECOND_FIGHTER,
         payload: fighter
     }
 }

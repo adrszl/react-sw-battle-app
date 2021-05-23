@@ -1,10 +1,13 @@
-import { ADD_FIGHTER, FIGHTERS_LOADING, FETCHING_FIGHTERS_FAILED } from './actions';
+import { ADD_FIRST_FIGHTER, ADD_SECOND_FIGHTER, FIGHTERS_LOADING, FETCHING_FIGHTERS_FAILED } from './actions';
 
-export const profile = (state = { loading: true,
+export const fighters = (state = { loading: true,
                                  errorMsg: null }, action) => {
     switch (action.type) {
-        case ADD_FIGHTER:
-            return {...state, loading: false, errorMsg: null, fighter: action.payload};
+        case ADD_FIRST_FIGHTER:
+            return {...state, loading: false, errorMsg: null, firstFighter: action.payload};
+
+        case ADD_SECOND_FIGHTER:
+            return {...state, loading: false, errorMsg: null, secondFighter: action.payload};
 
         case FIGHTERS_LOADING:
             return {...state, loading: true, errorMsg: null, fighter: []}

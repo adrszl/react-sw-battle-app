@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 function PlayerCard(props) {
     const { name, height, hair_color, mass, skin_color, eye_color, birth_year, gender } = props.player;
+
     return(
         <Card className={ props.resultClass }>
             <CardHeader 

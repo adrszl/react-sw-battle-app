@@ -5,6 +5,8 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 
 function StarshipCard(props) {
+
+
     const { 
         name,
         model, 

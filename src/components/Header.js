@@ -2,18 +2,27 @@ import React, { useState, useEffect } from 'react';
 import './Header.css';
 
 function Header() {
-    const [visible, setVisible] = useState(true);
+    const [firstHeaderVisible, setFirstHeaderVisible] = useState(true);
+    const [secondHeaderVisible, setSecondHeaderVisible] = useState(true);
 
     useEffect(() => {
         setTimeout(() => { 
-            setVisible(false);
+            setFirstHeaderVisible(false);
         }, 4000);
+
+        setTimeout(() => { 
+            setSecondHeaderVisible(false);
+        }, 7000);
     });
 
     return (
         <React.Fragment>
-            { visible ?
+            { firstHeaderVisible ?
                 <h1 className="text-center">React based SW battle app</h1>
+                : null
+            }
+            { secondHeaderVisible ?
+                <h2 className="text-center">Created by <a href="https://adrszl.github.io/" target="_blank">Adrian Szlegel</a></h2>
                 : null
             }
             <h4 className="text-center">Select game type:</h4>
