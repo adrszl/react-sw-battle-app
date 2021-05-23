@@ -8,8 +8,6 @@ export const FETCHING_FIGHTERS_FAILED = 'FETCHING_FIGHTERS_FAILED';
 export const ADD_FIRST_FIGHTER = 'ADD_FIRST_FIGHTER';
 export const ADD_SECOND_FIGHTER = 'ADD_SECOND_FIGHTER';
 
-const FETCH_BASE_URL = 'https://swapi.dev/api';
-
 export const fetchFightersRedux = (personId, category, playerCase) => (dispatch) => {
     
     dispatch(fightersLoading());
@@ -17,7 +15,7 @@ export const fetchFightersRedux = (personId, category, playerCase) => (dispatch)
     let fighterCategory = '';
     category === 'people' ? fighterCategory = 'people' : fighterCategory = 'starships';
 
-    return axios.get(FETCH_BASE_URL + `/${fighterCategory}/${personId}`)
+    return axios.get(`https://swapi.dev/api/${fighterCategory}/${personId}`)
         .then(({data}) => {
             if(playerCase === 'first player') {
                 dispatch(addFirstFighter(data));
