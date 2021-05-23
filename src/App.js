@@ -12,11 +12,8 @@ import LoadingSpinner from './components/Spinner';
 import './App.css';
 
 // REDUX
-import { ConfigureStore } from './redux/configureStore';
 import { connect } from "react-redux";
 import { fetchFightersRedux } from "./redux/actions";
-
-const store = ConfigureStore();
 
 const classes = {
   cards: {

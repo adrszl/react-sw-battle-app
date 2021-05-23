@@ -22,7 +22,7 @@ function Header() {
                 : null
             }
             { secondHeaderVisible ?
-                <h2 className="text-center">Created by <a href="https://adrszl.github.io/" target="_blank">Adrian Szlegel</a></h2>
+                <h2 className="text-center">Created by <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a></h2>
                 : null
             }
             <h4 className="text-center">Select game type:</h4>
