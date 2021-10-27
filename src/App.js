@@ -1,19 +1,28 @@
+// REACT
 import React, { Component } from 'react';
+
+// REACT-BOOTSTRAP
 import Button from 'react-bootstrap/Button';
+
+// COMPONENTS
 import Header from './components/Header';
 import RadioGameType from './components/RadioGameType';
 import DropdownPlayAgainst from './components/DropdownPlayAgainst';
 import ScoreCounter from './components/ScoreCounter';
 import PlayerCard from './components/PlayerCard';
 import StarshipCard from './components/StarshipCard';
-import Snackbar from '@material-ui/core/Snackbar';
 import ResultInfo from './components/ResultInfo';
 import LoadingSpinner from './components/Spinner';
-import './App.css';
+
+// MATERIAL UI
+import Snackbar from '@material-ui/core/Snackbar';
 
 // REDUX
 import { connect } from "react-redux";
 import { fetchFightersRedux } from "./redux/actions";
+
+// OTHER
+import './App.css';
 
 const classes = {
   cards: {
@@ -68,56 +77,14 @@ class App extends Component {
       let personNum = Math.floor(Math.random() * 90);
       
       this.props.dispatch(fetchFightersRedux(personNum, 'people', 'first player'));
-      // fetch(`https://swapi.dev/api/people/${personNum}`)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     this.setState({ firstPlayer: data });
-      //   });
-
       personNum = Math.floor(Math.random() * 90);
-
       this.props.dispatch(fetchFightersRedux(personNum, 'people', 'second player'));
-      // fetch(`https://swapi.dev/api/people/${personNum}`)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     this.setState({ secondPlayer: data, loading: false });
-      //   });
     } else if ( this.state.radioSelected === 'Starships' ) {
       let starshipPageNum = Math.floor(Math.random() * (16 - 2)) + 2;
+      
       this.props.dispatch(fetchFightersRedux(starshipPageNum, 'starships', 'first player'));
-      // let starshipPageNumStr = '';
-      // let randomResult = 0;
-      // starshipPageNum === 1 ? starshipPageNumStr = '' : starshipPageNumStr = `?page=${starshipPageNum}`; 
-      // fetch(`https://swapi.dev/api/starships/${starshipPageNumStr}`)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     if(starshipPageNum === 4) randomResult = Math.floor(Math.random() * 7);
-      //     else randomResult = Math.floor(Math.random() * 10);
-      //     this.setState({ firstPlayer: data.results[randomResult] });
-      //   });
-
       starshipPageNum = Math.floor(Math.random() * (16 - 2)) + 2;
       this.props.dispatch(fetchFightersRedux(starshipPageNum, 'starships', 'second player'));
-      // starshipPageNum = Math.floor(Math.random() * 4) + 1;
-      // starshipPageNumStr = '';
-      // randomResult = 0;
-      // starshipPageNum === 1 ? starshipPageNumStr = '' : starshipPageNumStr = `?page=${starshipPageNum}`; 
-
-      // fetch(`https://swapi.dev/api/starships/${starshipPageNumStr}`)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     if(starshipPageNum === 4) randomResult = Math.floor(Math.random() * 7);
-      //     else randomResult = Math.floor(Math.random() * 10);
-      //     this.setState({ secondPlayer: data.results[randomResult], loading: false });
-      //   });
     }
   }
 
@@ -200,10 +167,6 @@ class App extends Component {
             <div>
               <div className="d-flex flex-row justify-content-around mt-4">
                 <div className="card-container" style={classes.cards}>
-                  {/* <PlayerCard 
-                    resultClass={resultClassFirst}
-                    player={this.state.firstPlayer}
-                  /> */}
                   { firstFighter ? 
                     <PlayerCard 
                       resultClass={resultClassFirst}
@@ -214,10 +177,6 @@ class App extends Component {
                 </div>
                 <p>VS</p>
                 <div className="card-container" style={classes.cards}>
-                  {/* <PlayerCard 
-                    resultClass={resultClassSecond}
-                    player={this.state.secondPlayer}
-                  /> */}
                   { secondFighter ? 
                     <PlayerCard 
                       resultClass={resultClassSecond}
@@ -240,7 +199,8 @@ class App extends Component {
             <div>
               <div className="d-flex flex-row justify-content-around mt-4">
                 <div className="card-container" style={classes.cards}>
-                  { firstFighter ? <StarshipCard 
+                  { firstFighter ? 
+                    <StarshipCard 
                     resultClass={resultClassFirst}
                     player={ firstFighter }
                   />
