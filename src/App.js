@@ -49,7 +49,8 @@ class App extends Component {
       secondPlayer: {},
       fightResult: '',
       firstPlayerScore: 0,
-      secondPlayerScore: 0
+      secondPlayerScore: 0,
+      battleLog: []
     };
     this.fetchFighters = this.fetchFighters.bind(this);
     this.handleRadioChange = this.handleRadioChange.bind(this);
@@ -92,21 +93,21 @@ class App extends Component {
     if( this.props.firstFighter[this.state.playAgainst] === 'unknown' || this.props.firstFighter[this.state.playAgainst] === 'n/a' ) {
 
       this.props.secondFighter[this.state.playAgainst] === 'unknown' || this.props.secondFighter[this.state.playAgainst] === 'n/a' ? 
-        this.setState({ fightResult: 'draw' }) 
-        : this.setState({ showScore: true, fightResult: 'second', secondPlayerScore: this.state.secondPlayerScore + 1 })
+        this.setState({ fightResult: 'draw', battleLog: [...this.state.battleLog, 'Draw']}) 
+        : this.setState({ showScore: true, fightResult: 'second', secondPlayerScore: this.state.secondPlayerScore + 1, battleLog: [...this.state.battleLog, 'Second player won'] })
 
     } else if ( this.props.secondFighter[this.state.playAgainst] === 'unknown' || this.props.secondFighter[this.state.playAgainst] === 'n/a' ) {
-      this.setState({ showScore: true, fightResult: 'first', firstPlayerScore: this.state.firstPlayerScore + 1 })
+      this.setState({ showScore: true, fightResult: 'first', firstPlayerScore: this.state.firstPlayerScore + 1, battleLog: [...this.state.battleLog, 'First player won'] })
     } else {
-      if( this.props.firstFighter[this.state.playAgainst] === this.props.secondFighter[this.state.playAgainst] ) this.setState({ fightResult: 'draw' });
+      if( this.props.firstFighter[this.state.playAgainst] === this.props.secondFighter[this.state.playAgainst] ) this.setState({ fightResult: 'draw', battleLog: [...this.state.battleLog, 'Draw'] });
 
       else {
         let firstValue = parseInt(this.props.firstFighter[this.state.playAgainst]);
         let secondValue = parseInt(this.props.secondFighter[this.state.playAgainst]);
         if (firstValue > secondValue) {
-          this.setState({ showScore: true, fightResult: 'first', firstPlayerScore: this.state.firstPlayerScore + 1 });
+          this.setState({ showScore: true, fightResult: 'first', firstPlayerScore: this.state.firstPlayerScore + 1, battleLog: [...this.state.battleLog, 'First player won'] });
         } else {
-          this.setState({ showScore: true, fightResult: 'second', secondPlayerScore: this.state.secondPlayerScore + 1 })
+          this.setState({ showScore: true, fightResult: 'second', secondPlayerScore: this.state.secondPlayerScore + 1, battleLog: [...this.state.battleLog, 'Second player won'] })
         }
       }
     }
@@ -226,7 +227,13 @@ class App extends Component {
             : null
           }
 
-          <div className="text-center">Battle log [soon...]</div>
+          <div className="text-center">
+            <p>Battle log (to be improved):</p>
+            { this.state.battleLog && 
+              this.state.battleLog.map((log, index) => {
+                return <p key={`log-line-${index}`}>{ log }</p>
+              })}
+          </div>
         </div>
     );
   }

@@ -24,7 +24,7 @@ export const fetchFightersRedux = (personId, category, playerCase) => (dispatch)
             }
         })
         .catch((err) => {
-            dispatch(fighterFailed(err));
+            console.error(`There was an error, while fetching the fighters: ${err}`)
             
             if(category === 'people') {
                 dispatch(fetchFightersRedux(1, 'people', playerCase));
@@ -51,12 +51,5 @@ export function addSecondFighter(fighter) {
     return { 
         type: ADD_SECOND_FIGHTER,
         payload: fighter
-    }
-}
-
-export function fighterFailed(errorMsg) {
-    return {
-        type: FETCHING_FIGHTERS_FAILED,
-        payload: errorMsg
     }
 }
